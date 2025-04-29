@@ -18,6 +18,6 @@ export default class MatrixComponent {
    
 }
 function getHtmlFromMatrixObj(matrixObj) {
-    const res = matrixObj.map(n => `<div class=${`cell ${n ? "cell-alive" : "cell-dead"}`} ></div>`);
+    const res = matrixObj.map(n => `<div class="${`cell ${n ? "cell-alive" : "cell-dead"}`}" ></div>`);
     return res.join("");
 }
