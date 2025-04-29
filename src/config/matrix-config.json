@@ -1,5 +1,5 @@
 {
-    "rows": 10,
-    "columns": 10,
-    "interval": 1000
+    "rows": 50,
+    "columns": 50,
+    "interval": 400
 }
