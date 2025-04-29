@@ -9,4 +9,8 @@ export default class MatrixStates {
     );
     return this.#_matrix;
   }
+  next(){
+    this.#_matrix = this.createRandomMatrix(this.#_matrix.length, this.#_matrix[0].length);
+    return this.#_matrix;
+  }
 }
