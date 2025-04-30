@@ -10,18 +10,16 @@ export default class MatrixStates {
     return this.#_matrix;
   }
   next(){
-    this.#_matrix = this.#_matrix.map((row, rIndex) => this.#newRow(row, rIndex));
+    this.#_matrix = this.#_matrix.map(this.#newRow.bind(this));
     return this.#_matrix;
   }
   #newRow(row, rIndex) {
     return row.map((cell, cIndex) => this.#newCell(cell, rIndex, cIndex));
   }
   #newCell(cell, rIndex, cIndex) {
-    this.#_matrix[rIndex][ cIndex] = 0; //not to count for neighbors
     const neighbors = this.#getNeighborsArea(rIndex, cIndex);
     const sumNeighbors = neighbors.flatMap(a => a).reduce((sum, cur) => sum + cur);
-    const res = cell ? forPopulated(sumNeighbors) : forUnpopulated(sumNeighbors);
-    this.#_matrix[rIndex] [cIndex] = cell; //restoring the current cell
+    const res = cell ? forPopulated(sumNeighbors - 1) : forUnpopulated(sumNeighbors);
     return res;
 
   }
